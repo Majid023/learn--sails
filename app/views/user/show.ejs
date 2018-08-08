@@ -1,0 +1,11 @@
+<div class="container">
+    <h1><%= user.name %> </h1>
+    <h3><%= user.title %> </h3>
+    <hr>
+    <h3> Contact: <%=user.email %> </h3>
+    <form action="/user/edit/<%=user.id %>" method="post">
+        <input type="hidden" name="_method" value="edit"/>
+        <input type="submit" class="btn bn-sm btn-warning" value="Edit"/>
+        <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+    </form>
+</div>

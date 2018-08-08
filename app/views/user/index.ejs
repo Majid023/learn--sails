@@ -1,0 +1,47 @@
+<div class="container">
+    <h3>Users</h3>
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Title</th>
+            <th>Email</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+
+        <% _.each(users, function(user){%>
+    
+            <tr data-id="<%= user.id %>" data-model="user">
+                <td><%= user.id %></td>
+                <td><%= user.name %></td>
+                <td><%= user.title %></td>
+                <td><%= user.email %></td>
+                <td>
+                    <form action="/user/show/<%=user.id %>" method="post">
+                        <input type="hidden" name="_method" value="Show"/>
+                        <input type="submit" class="btn bn-sm btn-primary" value="Show"/>
+                        <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+                    </form>
+                </td>
+                <td>
+                <form action="/user/edit/<%=user.id %>" method="post">
+                    <input type="hidden" name="_method" value="edit"/>
+                    <input type="submit" class="btn bn-sm btn-warning" value="Edit"/>
+                    <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+                </form>
+                <td>
+                <form action="/user/delete/<%=user.id %>" method="post">
+                    <input type="hidden" name="_method" value="delete"/>
+                    <input type="submit" class="btn bn-sm btn-primary" value="Delete"/>
+                    <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+                </form>
+            </td>
+            </td>
+
+            </tr>
+        <%})%>
+    </table>
+
+</div>
