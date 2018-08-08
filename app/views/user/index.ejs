@@ -19,20 +19,20 @@
                 <td><%= user.title %></td>
                 <td><%= user.email %></td>
                 <td>
-                    <form action="/user/show/<%=user.id %>" method="post">
+                    <form action="/user/show/<%=user.id %>" method="POST">
                         <input type="hidden" name="_method" value="Show"/>
                         <input type="submit" class="btn bn-sm btn-primary" value="Show"/>
                         <input type="hidden" name="_csrf" value="<%= _csrf %>" />
                     </form>
                 </td>
                 <td>
-                <form action="/user/edit/<%=user.id %>" method="post">
+                <form action="/user/edit/<%=user.id %>" method="POST">
                     <input type="hidden" name="_method" value="edit"/>
                     <input type="submit" class="btn bn-sm btn-warning" value="Edit"/>
                     <input type="hidden" name="_csrf" value="<%= _csrf %>" />
                 </form>
                 <td>
-                <form action="/user/delete/<%=user.id %>" method="post">
+                <form action="/user/delete/<%=user.id %>" method="POST">
                     <input type="hidden" name="_method" value="delete"/>
                     <input type="submit" class="btn bn-sm btn-primary" value="Delete"/>
                     <input type="hidden" name="_csrf" value="<%= _csrf %>" />
