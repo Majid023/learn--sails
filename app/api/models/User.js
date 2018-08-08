@@ -44,10 +44,10 @@ module.exports = {
         return next({err: ["Password doesn't match password confirmation"]});
     }
 
-    require("bcrypt").hash(valuse.password, 10, function passwordEncrypted(err, encryptPassword){
+    require("bcrypt").hash(values.password, 10, function passwordEncrypted(err, encryptPassword){
       if(err) return next(err);
 
-      values.encryptedPassword = encryptedPassword;
+      values.encryptedPassword =  encryptPassword;
       next();
     });
   }
