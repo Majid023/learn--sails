@@ -9,7 +9,9 @@ module.exports = {
         // req.session.cookie.expires = newDateObj;
         // req.session.authenticated = true;
         // console.log(req.session);
+    
         res.view("session/new");
+    
     },
 
     create: function(req, res, next){
@@ -55,6 +57,11 @@ module.exports = {
 
                 req.session.authenticated = true;
                 req.session.User = user;
+
+                if(req.session.User.admin) {
+                    res.redirect("/user");
+                    return;
+                }
 
                 res.redirect('/user/show/' + user.id);
             });

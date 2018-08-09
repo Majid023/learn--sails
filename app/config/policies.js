@@ -42,8 +42,12 @@ module.exports.policies = {
      
      user:{
        'new': "flash",
-       '*': "sessionAuth"
-     }
+       create: "flash",
+       show: "userProfile",
+       edit: "userProfile",
+       update: "userProfile",
+       '*': "admin"
+     },
 
 		// For the action `nurture`, apply the 'isRabbitMother' policy
 		// (this overrides `false` above)

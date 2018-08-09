@@ -29,6 +29,10 @@ module.exports = {
       encryptedPassword: {
         type: "string"
       },
+      admin: {
+        type: "boolean",
+        defaultsTo: false
+      },
 
       toJSON: function(){
         var obj = this.toObject();
@@ -38,6 +42,20 @@ module.exports = {
         delete obj._csrf;
         return obj;
       }
+  },
+  beforeValidation: function(values, next) {
+    console.log(values);
+
+    if(typeof values.admin !== 'undefined') {
+      if(typeof values.admin === 'unchecked') {
+         values.admin = false;
+
+      }else{
+        if(values.admin[1] === 'on') {
+          values.admin = true;
+        }
+      }
+    }
   },
   beforeCreate: function(values, next){
     if(!values.password || values.password !=values.confirmation){

@@ -4,7 +4,16 @@
     <input type="text" value="<%=user.name%>" class="form-control" placeholder="your name" name="name"/>
     <input type="text" value="<%=user.title%>" class="form-control" placeholder="your title" name="title"/>
     <input type="email" value="<%=user.email%>" class="form-control" placeholder="email address" name="email"/>
-    
+    <% if(session.authenticated && session.User.admin) {%>
+        <% if(user.admin) {%>
+            <input type="hidden" name="admin" value="unchecked">
+            <label class="checkbox"><input type="checkbox" name="admin" checked="checked">Admin</label>
+        <%}else{%>
+            <input type="hidden" name="admin" values="unchecked">
+            <label class="checkbox"><input type="checkbox" name="admin">Admin</label>
+        <%}%>
+        
+    <%}%>
     <input type="submit" class="btn -btn-lg btn-primary btn-block" value="Proceed"/>
     <input type="hidden" name="_csrf" value="<%= _csrf %>" />
 </form>
