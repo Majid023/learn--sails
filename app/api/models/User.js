@@ -29,6 +29,7 @@ module.exports = {
       encryptedPassword: {
         type: "string"
       },
+
       admin: {
         type: "boolean",
         defaultsTo: false
@@ -43,20 +44,22 @@ module.exports = {
         return obj;
       }
   },
-  beforeValidation: function(values, next) {
+
+
+  beforeValidate: function(values, next) {
     console.log(values);
-
     if(typeof values.admin !== 'undefined') {
-      if(typeof values.admin === 'unchecked') {
-         values.admin = false;
 
-      }else{
-        if(values.admin[1] === 'on') {
-          values.admin = true;
-        }
-      }
+      if(values.admin === 'unchecked') 
+        values.admin = false;
+      else
+        if(values.admin[1] === 'on') 
+          values.admin = true; 
     }
+    next();
   },
+
+
   beforeCreate: function(values, next){
     if(!values.password || values.password !=values.confirmation){
         return next({err: ["Password doesn't match password confirmation"]});

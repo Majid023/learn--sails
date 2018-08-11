@@ -69,6 +69,8 @@ module.exports = {
 
         User.update(req.param('id'),req.params.all(), function userUpdate(err){
             if(err) {
+                console.log(err);
+                console.log("update error");
                 return res.redirect("/user/edit/"+req.param("id"));
             }
             res.redirect('user/show/'+req.param("id"));
