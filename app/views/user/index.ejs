@@ -18,6 +18,13 @@
                 <td><%= user.name %></td>
                 <td><%= user.title %></td>
                 <td><%= user.email %></td>
+                <td><% if(user.admin){%>
+                    <img src="/images/admin.png" style="height:60px;width:50px">
+                    <%}else{%>
+                    <img src="/images/user.png" style="height:60px;width:50px">
+                    <%}%>
+                
+                </td>
                 <td>
                     <form action="/user/show/<%=user.id %>" method="POST">
                         <input type="hidden" name="_method" value="Show"/>

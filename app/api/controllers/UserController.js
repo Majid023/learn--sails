@@ -88,7 +88,42 @@ module.exports = {
                 res.redirect('/user');
             });
         });
+    },
+
+    subscribe: function(req, res, next) {
+        User.find(function foundUser(err, users) {
+            if(err) return next(err);
+        
+        User.subscribe(req.socket);
+        User.subscribe(req.socket, users);
+        res.send(200);
+        });
     }
-    
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

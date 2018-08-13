@@ -43,6 +43,7 @@ module.exports.policies = {
      user:{
        'new': "flash",
        create: "flash",
+       subscribe: "flash",
        show: "userProfile",
        edit: "userProfile",
        update: "userProfile",
